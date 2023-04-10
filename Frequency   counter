@@ -1,0 +1,52 @@
+function isReverse(arr,i,j){
+     
+     while(i<j){
+         [arr[i],arr[j]]=[arr[j],arr[i]]
+         i++
+         j--
+     }
+     return arr
+ }
+ 
+var search = function(arr, k) {
+ 
+arr=isReverse(arr,0,arr.length-1)
+arr=isReverse(arr,0,k-1)
+arr=isReverse(arr,k,arr.length-1)
+console.log(arr)
+
+
+ 
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
