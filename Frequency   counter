@@ -1,31 +1,135 @@
-function isReverse(arr,i,j){
-     
-     while(i<j){
-         [arr[i],arr[j]]=[arr[j],arr[i]]
-         i++
-         j--
+//.get method - 
+//.set method - 
+//.has method - return true if value will be exist.
+
+/*hashMap -convert into key value pair.*/
+let str ="sdqghgbh";
+let arr =str.split("");    //covert string into array.
+let hashMap={};
+
+//how use hashMap.
+for(let i=0; i<arr.length; i++){
+  if(!hashMap[arr[i]]){
+    hashMap[arr[i]] = 1;
+  }else{
+    hashMap[arr[i]] +=1 }
+}
+  console.log(hashMap)
+
+
+
+
+
+
+
+
+//to convert object into array
+const object1 = {id:1, name:"suvarna", lname:"somvanshi"};
+let array = Object.entries(object1)
+let res=""
+for(let i=0;i<array.length;i++){
+   res = res +arr[i][0]+ " "+arr[i][1]+"\n"
+}
+return res
+
+
+
+//frequency of characters in string
+
+var string ="fvfgbujnjhjijewuiuiffiig"
+let obj={};
+
+for(let i=0;i<string.length;i++){
+    if(obj[string[i]]==undefined){
+        obj[string[i]]=1;
+    }else{obj[string[i]]+=1}
+}
+
+
+
+//Q1  242. Valid Anagram
+
+function IsAnagram(s, t) {
+  if (s.length !== t.length) {
+    return false;
+  }
+
+  const frequency = new Map();
+
+  for (let char of s) {
+    frequency.set(char, (frequency.get(char) || 0) + 1);
+  }
+
+  for (let char of t) {
+    if (!frequency.has(char) || frequency.get(char) === 0) {
+      return false;
+    }
+
+    frequency.set(char, frequency.get(char) - 1);
+
+    // If the frequency count is greater than 0, this means that we have found a matching character in s, so we decrement the frequency count of char in the frequency Map by 1. This ensures that we are keeping track of how many times each character appears in t and that we are not double-counting any characters.
+   
+   
      }
-     return arr
- }
- 
-var search = function(arr, k) {
- 
-arr=isReverse(arr,0,arr.length-1)
-arr=isReverse(arr,0,k-1)
-arr=isReverse(arr,k,arr.length-1)
-console.log(arr)
+
+  return true;
+}
+console.log(IsAnagram("listen", "silent"));
 
 
- 
+
+
+
+
+//Q-2-347. Top K Frequent Elements
+//https://leetcode.com/problems/top-k-frequent-elements/
+
+/*Given an integer array nums and an integer k,
+ return the k most frequent elements. You may return the answer in any order.*/
+
+var topKFrequent = function(nums, k) {
+  let hashmap={};
+  let result=[];
+    
+    //frequency counter map
+    for(let num of nums){
+        if(hashmap[num]){
+            hashmap[num]++;
+        }else{hashmap[num]=1; }
+    }
+    
+    //sort by most frequent one(desc)
+    let arr=Object.entries(hashmap);//Object.entries convertobject to array for sort
+    
+    arr.sort((a,b)=>{return b[1]-a[1] });      //a[1]or b[1] is the frequency value
+
+    
+    //get the k most frequent ones,and push it to the final result
+    arr.slice(0,k).forEach(ele=>result.push(+ele[0]));
+    
+    return result;
+}
+    
+//Q-3  451. Sort Characters By Frequency 
+//https://leetcode.com/problems/sort-characters-by-frequency/
+  
+var frequencySort = function(s) {
+  var map = {};
+  var result = '';
+  var stringArray = s.split('');
+//put the character count into a map
+for(var i=0;i<stringArray.length;i++){
+  map[stringArray[i]] = map[stringArray[i]] + 1 || 1;
+}
+//sort the map first, then push into the result
+Object.keys(map).sort((a,b)=>map[b]-map[a]).forEach(function(v){
+for(var j=0;j<map[v];j++){
+  result += v;
+}
+});
+
+return result;
 };
-
-
-
-
-
-
-
-
 
 
 
