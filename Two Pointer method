@@ -1,0 +1,92 @@
+MULTIPLE POINTER METHOD -----
+
+
+var removeDuplicates = function(nums) {
+  let i=1,j=1,n=nums.length
+  
+  while(i<n){
+      if(nums[i]==nums[i-1]){ //duplicate ele
+          i++
+      }
+      else{
+          nums[j]=nums[i]
+          j++
+          i++
+      }
+  }
+    return j
+
+  };
+
+
+//Q-2) two sum  input array is sorted  
+  //* target given * => find indexOf target
+
+var twoSum = function(numbers, target){
+  let left = 0;
+  let right = numbers.length-1
+  
+  while(left < right){
+      const cur =numbers[left]+numbers[right];
+      if(cur==target)return[left+1,right+1];
+      cur >target ? right--:left++
+  }
+ }
+
+
+
+
+
+//11. Container With Most Water
+//leetcode.com/problems/container-with-most-water/
+var maxArea = function(height) {
+ 
+ let n=height.length;
+ let i=0, j=n-1
+ let ans=0
+ 
+ while(i<j){
+     
+     let w =(j-i)
+     let h=Math.min(height[i],height[j])
+     let area=w*h
+     ans=Math.max(area,ans)
+     
+     if(height[i]<height[j]){i++} 
+     else{j--}
+ }
+ return ans
+ }
+ 
+ 
+ 
+ 
+ //Q-5) Product of Array Except Self
+var productExceptSelf = function(nums) {
+  const res = [];
+let product = 1;
+
+for (let i = 0; i < nums.length; i++) {
+  res.push(product);
+  product *= nums[i];
+}
+
+product = 1;
+
+for (let j = nums.length - 1; j >= 0; j--) {
+  res[j] *= product;
+  product *= nums[j];
+}
+
+return res;
+};
+
+
+
+
+
+ 
+
+
+
+
