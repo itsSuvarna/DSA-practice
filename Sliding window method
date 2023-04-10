@@ -1,0 +1,198 @@
+SLIDING WINDOW ------>
+
+
+ This pattern involves creating a window which can either be an array or number from one position to another
+ Depending on a certain condition, the window either increases or closes (and a new window is created)
+ Very useful for keeping track of a subset of data in an array/string etc.
+ 
+ 
+ 
+ 
+ /Q2) 1839. Longest Substring Of All Vowels in Order
+/if we compare a<e it compare ascii/sky value; a=97(value of is 97);
+ttps://leetcode.com/problems/longest-substring-of-all-vowels-in-order
+ar longestBeautifulSubstring = function(word) {
+ var n=word.length;
+ var len=1;         //count length of selected letters
+ var count=1;       //count distnct letters
+ var ans=0;
+    
+    for(let i=1;i<n;i++){
+        if(word[i-1]<=word[i]){
+             len++;
+             if(word[i-1]!=word[i]){
+                count++
+            }
+        }
+            else{
+                len=1
+                count=1
+            }
+        
+        if(count==5){
+            ans =Math.max(ans,len)
+         }
+    }
+        return ans;
+}
+
+
+
+
+
+
+//Q-3.1876. Substrings of Size Three with Distinct Characters
+ 
+var countGoodSubstrings = function(s) {
+  let n=s.length
+  let ans=0
+  
+  for(let i=0;i<n-2;i++){
+      
+      let a=s[i]
+      let b=s[i+1]
+      let c=s[i+2]
+      
+      if(a!=b && b!=c && c!=a){
+          ans++
+      }
+  }
+  return ans
+  
+}
+
+
+
+
+
+
+//Q-4) 1763.Longest substring
+
+var longestNiceSubstring = function(s) {
+  
+  s = s.split("")
+  const N = s.length
+  let max = ""
+
+  for (let i = 0; i < N - 1; i++) {
+    let substr = [s[i]]
+
+    for (let j = i + 1; j < N; j++) {
+      substr.push(s[j])
+      let isNice = true
+
+      for (const c of substr) {
+        if (
+          !substr.includes(c.toLowerCase()) ||
+          !substr.includes(c.toUpperCase())
+        ) {
+          isNice = false
+        }
+      }
+
+      if (isNice && substr.join("").length > max.length) {
+        max = substr.join("")
+      }
+    }
+  }
+
+  return max
+
+};
+
+
+
+
+
+ //Q-5.  219. Contains Duplicate II
+
+ /*Given an integer array nums and an integer k, 
+ return true if there are two distinct indices i and j
+ in the array such that nums[i] == nums[j] and abs(i - j) <= k.*/
+
+ var containsNearbyDuplicate = function(nums,k) {
+  const mp =new Map();
+  for(let i=0;i<nums.length;i++){
+      if(i-mp.get(nums[i])<=k){
+          return true;
+      }
+      mp.set(nums[i],i)
+  }
+  return false
+};
+
+//or
+var containsNearbyDuplicate = function(nums, k) {
+for(let i=0;i<nums.length;i++){
+  for(let j=i+1;j<nums.length;i++){
+    if(nums[i] == nums[j] && Math.abs(i-j))
+    return true
+  }
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+// Q-7) 1493.Longest Subarray of 1’s After deleting one element
+
+var longestSubarray = function(nums) {
+    
+  let ans=0
+  let n=nums.length
+  let i=0,j=0,count=0
+  var zero=false
+  
+  while(j<n){
+      if(nums[j]==0){
+          count++
+          zero=true
+      }
+      
+      if(count<1){
+          j++
+      }
+      else if(count==1){
+          let l=(j-i+1)
+          ans=Math.max(ans,l)
+          j++
+      }
+      else{
+          if(nums[i]==0)
+              count--;
+          i++;
+          j++;
+      }
+  }
+  if(zero==false)ans=n
+  return ans-1;
+};
+
+
+
+
+
+
+/** 53. Maximum Subarray */
+    var maxSubArray = function(nums) {
+    var sum=nums[0]
+    var ans=nums[0]
+    let n=nums.length
+    
+    for(let i=1;i<n;i++){
+        if(sum<0)
+            sum=0
+            sum+=nums[i]
+            ans=Math.max(ans,sum)
+        }
+    
+    return ans
+};
