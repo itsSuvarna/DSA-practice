@@ -1,0 +1,189 @@
+Bubble  sort------
+it swaps the ele of array 
+
+
+
+
+
+//29-03-2022  --> swap,reverse,rotate-k times
+
+//swap
+let a=1
+let b=2
+//swap
+a=a+b
+b=a-b
+a=a-b
+
+console.log(a,b);
+
+
+//344. Reverse String without any third variable.
+var reverseString = function(s) {
+  var n= s.length
+  let i=0,j=n-1
+  while(i<j){
+      s[i]=s[i].concat(s[j])                         //swapping oftwo ele in Bubble sort
+      s[j]=s[i].slice(0,s[i].length-s[j].length)
+      s[i]=s[i].slice(s[j].length)
+      i++
+      j--
+  }
+  return s
+};
+
+/*Reverse array without extra array*/
+ let arr=[2,3,5,6,8,9]
+
+ //broutforce app
+  let reverse=[]
+  for(let i=arr.length-1;i>=0;i--){
+  reverse.push(arr[i])
+ }
+
+ //or
+ function reverse(arr){
+ let i=0                         //first ele
+ let j=arr.length-1               //last ele
+ 
+ while(i<j){
+  //keep swapping
+  arr[i]=arr[i]+arr[j]
+  arr[j]=arr[i]-arr[j]
+  arr[i]=arr[i]-arr[j]
+   i++
+   j--
+}
+ return arr
+ }
+
+
+ /*rotate array -rotate(arr,k) rotate array by k element*/
+ let arr=[2,4,5,11,12] , k=3
+ rotate(arr,3)  //=>[11,12,2,4,5]
+
+ //broutforse
+for(let i=0;i<k;i++){
+  let x=arr.pop()
+  arr.unshift(x)    //arr.unshift(arr.pop())
+}
+
+//or 
+
+
+//or  without using any third variable     //rotate
+ function reverse(arr){
+  let i=0, j=arr.length-1;
+  while(i<j){
+   //keep swapping
+   arr[i]=arr[i]+arr[j]
+   arr[j]=arr[i]-arr[j]
+   arr[i]=arr[i]-arr[j]
+    i++
+    j--
+  }
+  return arr
+  }
+
+  arr=reverse(arr,0,arr.length-1)   //complete arr     rotate
+  arr= reverse(arr,0,arr.length)    //first k ele      rotate
+  arr= reverse(arr,k,arr.length)    //last n-k ele     rotate
+
+  console.log(arr)
+
+
+
+/*largest pair */
+
+let arr = [12,3410,16,40]  
+//broutforce approch
+arr.sort(function(a,b){return a-b})
+sum=arr[arr[length-1]+ arr[length-2]]
+console.log(sum);
+
+//or
+let  sum=0, max=0, sMax=0.
+for(let i=0;i<arr.length;i++){       //0(N)
+     if(arr[i]>max){
+        sMax =max
+        max =arr[i]}
+     else if(arr[i]>max){
+      sMax = arr[i]}
+  }
+
+  sum= max+sMax
+  console.log(sum)
+
+// 29-3-2023
+//Q-1) take input & check wheather it is integer or not
+
+//using regex
+let inputNo =567
+function checkInput(inputNo){
+let pattern = / -?[0-9]+$/;
+let result = pattern.test(inputNo)
+return result
+}
+
+// check no. is integer or float
+let x=5;
+if(typrOf x=='number'&& !isNaN(x)){
+  //check if it is integer
+ if(Number.isInteger){
+  console.log("it is integer");}
+  else{console.log("it is float value")}}
+else{console.log("it is not number")}
+
+//
+var input =34;
+
+if(!isNaN(input)){console.log('it is number')}
+else{console.log("it is not number")}
+
+!isNaN(34) //return true
+!isNaN('34') //return true
+!isNaN('hello') //return false
+!isNaN(true) //return true
+!isNaN(false) //return true
+!isNaN('undefined') //return false
+
+// Q 412) Fizz Buzz
+
+var fizzBuzz = function(n) {
+  let ans =[]
+  
+  for(let i=1;i<=n;i++){
+      if(i%3==0 && i%5==0){ans.push('FizzBuzz') }
+      else if(i%3==0){ans.push('Fizz')}
+      else if(i%5==0){ans.push('Buzz')}
+      else{ans.push(i+'')}
+  }
+  
+  return ans
+};
+
+//541. Reverse String II
+
+var reverseStr = function(str, k) {
+  let i=0
+  var s=str.split("")
+  var n=s.length
+  while(i<n){
+      let l=i
+      let r=i+k-1
+      if(r>=n)r=n-1
+      while(l<r){
+          s[l]=s[l].concat(s[r])
+          s[r]=s[l].slice(0,s[l].length-s[r].length)
+          s[l]=s[l].slice(s[r].length)
+          l++
+          r--
+      }
+      i+=2*k
+  }
+  return s.join("")
+};
+
+
+
+
