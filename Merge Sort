@@ -1,0 +1,59 @@
+//use of merge sort to sort given single array  //using recursive method
+
+function mergeSort(arr,l, r){  //O(logN)
+       if(l>=r){
+            return;//returns recursively
+          }
+        var m=parseInt((l+r)/2)
+          mergeSort(arr,l,m);
+          mergeSort(arr,m+1,r);
+          merge(arr,l,m,r);//O(N)
+  }
+
+
+
+//By using swapping method
+
+function segrate0and1(arr,n){
+   let l=0
+   let r=n-1
+
+   while(l<r){
+      if(arr[l]==0){          //getting 0's in order
+        l++
+        continue
+      }
+      if(arr[r]==1){          //getting 1's in order
+        r--
+        continue
+      }
+    
+     //if arr[l]=1, arr[r]=0  then need to swap ele.
+     arr[l]=arr[l]+arr[r]
+     arr[r]=arr[l]-arr[r]
+     arr[l]=arr[l]-arr[r]
+
+   }
+}
+
+
+
+
+
+//164. Maximum Gap
+
+function(nums) {
+  let l=0,r=nums.length-1
+  
+  while(l<=r){
+      if(r<2){
+          return 0
+      }
+      else{
+         var m=Math.floor((l+r)/2)
+          mergeSort(arr,l,m);
+          mergeSort(arr,m+1,r);
+        var sorted = merge(arr,l,m,r)
+      }
+  }
+};
