@@ -137,6 +137,118 @@ return result;
 
 
 
+/*gog --> Count pairs with given sum */
+//array, no. of integer n, sum equal to k
+//find no. of pairs which gives sum
+ 
+//broutForce Approach
+function getPairsCount(arr,n,k){
+     let ans=0
+    for(let i=0;i<n;i++){
+      for(let j=i+1;j<n;j++){
+        let sum=arr[i]+arr[j]
+        if(k==sum){ans++}
+      }
+    }
+    return ans
+}
+
+//Using freq counter  //using new Map() 
+
+function getPairsCount(arr,n,k){
+    let ans=0;
+    let mp=new Map()
+    
+    for(let i=0;i<n;i++){
+        let x=arr[i]
+        let y=k-x
+        if(mp.has(y)){
+            ans+=mp.get(y)   //to add in ans
+        }
+        if(mp.has(x)){       //if ele is already present to add freq
+            mp.set(x,mp.get(x)+1)
+        }
+        else{
+            mp.set(x,1);
+        }
+    }
+    return ans
+}
+
+  let arr=[1,5,1,4,2,7],  n=6, sum=6;
+ console.log(getPairsCount(arr,n,sum))
+
+
+ //find freq using new Map()
+ function countFreq(arr){
+  let mp=new Map()
+  for(let i=0;i<arr.length;i++){
+      let x=arr[i]
+      if(mp.has(x)){
+          mp.set(x,mp.get(x)+1)
+          }
+      else{
+          mp.set(x,1);
+           }
+    }
+    mp.forEach((value,key)=>{
+        console.log(key,value)
+      //console.log('key=',key,'and value=',value);
+    })
+}
+
+let arr=[1,5,1,4,2,7],  n=6, sum=6;
+console.log(countFreq(arr,n,sum))
+
+
+
+
+
+//2423. Remove Letter To Equalize Frequency
+var equalFrequency = function(s) {
+  var map=new Map()
+  var n=s.length
+  for(let i=0;i<n;i++){
+      if(map.has(s[i])){
+          map.set(s[i],map.get(s[i])+1)
+      }
+      else{
+          map.set(s[i],1)
+      }
+  }
+  var str="abcdefghijklmnopqrstuvwxyz"
+  for(let i=0;i<26;i++){
+      if(map.has(str[i])){
+          if(map.get(str[i])==1){
+              map.delete(str[i])
+          }
+          else{
+              map.set(str[i],map.get(str[i])-1)
+          }
+          var arr=[]
+          map.forEach((value,key)=>{
+              arr.push(value)
+          })
+          arr.sort((a,b)=>a-b)
+          if(arr[0]==arr[arr.length-1])return true
+          if(map.has(str[i])){
+              map.set(str[i],map.get(str[i])+1)
+          }
+          else{
+              map.set(str[i],1)
+          }
+      }
+  }
+  return false
+}
+
+
+
+
+
+
+
+
 
 
 
