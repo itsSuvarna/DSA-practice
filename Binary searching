@@ -233,3 +233,140 @@ while(j<m){
 }
 
 console.log(c);
+
+
+
+
+
+//74. Search a 2D Matrix
+function findEleInMatrix(matrix, target) {
+  let n=matrix.length
+  let m=matrix[0].length
+  let total=m*n                        //total ele in matrix --> 1st row length*matrix arrlength
+  let l=0;
+  let r=total-1                        //last index = total ele -1
+  
+  while(l<=r){
+      let mid=Math.floor((l+r)/2)
+      let row=Math.floor(mid/m)        //row
+      let col=mid%m                    //column
+      let x=matrix[row][col]
+      
+      if(x==target){
+          return true
+      }
+      else if(target<x){              //left
+           r=mid-1
+      }
+      else{
+          l=mid+1
+      }
+  }
+  return false
+  
+};
+
+
+//Use binary search for sorting two array in increasing order //using iterative method
+
+let a=[2,5,8,9]
+let b=[3,4,7]
+
+var n=a.length,m=b.length
+let c = new Array(m+n)
+
+let i=0,j=0,k=0
+while(i<n&&j<m){
+    if(a[i]<b[j]){
+        c[k]=a[i]
+        i++
+        k++
+    }
+    else{
+        c[k]=b[j]
+        k++
+        j++
+    }
+}
+
+while(i<n){
+    c[k]=a[i]
+    i++
+    k++
+}
+
+while(j<m){
+    c[k]=b[j]
+    k++
+    j++
+}
+
+console.log(c);
+
+
+
+
+
+//81. Search in Rotated Sorted Array II --> find target --> i.e use ofsearchin algorithm
+
+function(nums, target) {
+  let l = 0;
+  let r = nums.length - 1
+  while(l<=r){                                        //In binary l<=r
+      let mid = Math.floor((l+r)/2)                    
+      if(nums[mid] === target)                         //1st cond ckeck mid=target
+          return true
+      
+      // duplicate case
+      if(nums[l] === nums[mid] && nums[r] === nums[mid]){
+          l += 1
+          r -= 1
+      }
+      // left sorted portion
+      else if(nums[l] <= nums[mid]){
+          if(nums[l] <= target && target < nums[mid]){
+              r = mid - 1
+          } else {
+              l = mid + 1
+          }
+      } 
+      // right sorted portion
+      else {
+          if(nums[mid] < target && target <= nums[r]) {
+              l = mid + 1
+          } else {
+              r = mid - 1
+          }
+      }
+  }
+
+  return false
+};
+
+
+
+
+
+
+//69. Sqrt(x)
+  function(x) {
+    var l=1;                                //In sq take l=1
+    var r=x
+    var ans=0
+    
+    while(l<=r){                           //In binary take l<=r
+        var mid=Math.floor((l+r)/2)      
+        if(mid*mid==x){                    //if x is square of mid term
+            ans=mid
+            break;
+            }
+        else if(mid*mid<x){                //sq of mid < x
+            ans=mid
+            l=mid+1
+        }
+        else{                              //sq mid > x
+            r=mid-1
+        }
+    }
+    return ans
+    }
