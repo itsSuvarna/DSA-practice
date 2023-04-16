@@ -130,6 +130,30 @@ var isPalindrome = function(s) {
 
 
 
+//50. Pow(x, n)
+Implement pow(x, n), which calculates x raised to the power n (i.e., xn).
+
+------>
 
 
+function(x, n) {                                //O(logn)
+    
+    if(n===0){return 1}                         //base case  //any number raised to zero is one i.e n**0=1
+    
+    
+    if(n<0){                                    //if n is negative,take x=1/x & n=-n
+        x=1/x;
+        n=-n; }
+    
+    
+       // Recursive cases                                    
+    if(n%2===0){                                 //If n is even,compute myPow(x*x,x/2)
+        return myPow(x*x,n/2);
+      }
+       else{
+        return x*myPow(x*x,Math.floor(n/2))      //If n is odd ,compute  x*myPow(x*x,Math.floor(n/2))
+        }
+    
+    
+}
 
