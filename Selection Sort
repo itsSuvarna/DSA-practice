@@ -22,3 +22,31 @@ function selectionShort(arr){
 
 let arr=[200,3,4,5,6,700,8,10]
 selectionShort(arr)
+
+
+
+
+
+//Selection Sort
+function selectionShort(arr){
+    
+    let maxId 
+    for(let i=0;i<arr.length;i++){
+        maxId=i
+     for(let j=i+1;j<arr.length;j++){
+        if(arr[j]>arr[maxId]){
+            maxId =j
+        }    
+      }
+    
+    
+    let temp =arr[maxId]
+    arr[maxId]=arr[i]
+    arr[i]=temp
+    }
+    console.log(arr)
+}
+
+
+let arr=[200,3,4,5,6,700,8,10]
+selectionShort(arr)
