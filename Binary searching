@@ -36,6 +36,35 @@ let arr =[2,3,4,5,6,7,8,9], x=9
 BinarySearch(arr,x)
 
 
+//recursive method
+
+
+let arr=[3,4,5,67,88,6]
+let l=0;
+let r=arr.length-1;
+let x=6
+let ans=undefined;
+
+function recursiveBinary(arr,l,r){
+    let mid=parseInt((l+r)/2);
+    
+    if(arr[mid]==x){
+        ans=mid;
+        console.log(ans)
+        return true
+    }
+    
+    else if(arr[mid]<x){
+        recursiveBinary(arr,mid+1,r)
+    }
+    
+    else{ recursiveBinary(arr,l,mid-1)}
+}
+
+
+recursiveBinary(arr,l,r)
+
+
 
 
 
