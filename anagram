@@ -1,0 +1,52 @@
+function isAnagram(s1,s2){
+    let Obj1={};
+    
+    if(s1.length !=s2.length){
+        console.log(false);
+        return false             //to stop cond return needed break not work
+    }
+    
+    for(ch of s1){
+        Obj1[ch]=(Obj1[ch] || 0)+1
+    }
+    
+    for(ch of s2){
+        if(!Obj1[ch]){                        //if ch not in obj1[ch]
+          console.log(false); 
+          return false           //to stop cond return needed break not work
+        }
+        Obj1[ch]--;
+    }
+    console.log(true)
+    
+    
+}
+
+let s1 ="cat"
+let s2 ="act"
+
+isAnagram(s1,s2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
