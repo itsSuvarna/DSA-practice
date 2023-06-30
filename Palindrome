@@ -1,0 +1,22 @@
+
+
+let s1="lebel"
+
+function isPalindrome(s1){
+
+let start=0;
+let end=s1.length-1
+let ans=true;
+
+while(end>start){
+if(s1[end] != s1[start]){
+ ans=false
+}
+start++
+end--
+}
+console.log(ans)
+ return ans
+}
+
+isPalindrome(s1)
